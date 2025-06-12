@@ -47,8 +47,9 @@ DEFAULTS = {
     "C": 2
 }
 
-if "reset_trigger" not in st.session_state:
-    st.session_state.reset_trigger = False
+for k, v in DEFAULTS.items():
+    if k not in st.session_state:
+        st.session_state[k] = v
 
 def reset_params():
     for k, v in DEFAULTS.items():
@@ -56,53 +57,20 @@ def reset_params():
     st.rerun()
 
 st.sidebar.title("🛠️ Controls")
-
 if st.sidebar.button("🔄 Reset to Defaults"):
     reset_params()
 
-boost_color = st.sidebar.checkbox(
-    "Boost Color Saturation",
-    value=st.session_state.get("boost_color", DEFAULTS["boost_color"]),
-    key="boost_color"
-)
-soft_edges = st.sidebar.checkbox(
-    "Apply Soft Edges",
-    value=st.session_state.get("soft_edges", DEFAULTS["soft_edges"]),
-    key="soft_edges"
-)
+boost_color = st.sidebar.checkbox("Boost Color Saturation", key="boost_color")
+soft_edges = st.sidebar.checkbox("Apply Soft Edges", key="soft_edges")
 
-d = st.sidebar.slider(
-    "Diameter (d)", 1, 25,
-    value=st.session_state.get("d", DEFAULTS["d"]),
-    step=2, key="d"
-)
-sigmaColor = st.sidebar.slider(
-    "Sigma Color", 1, 300,
-    value=st.session_state.get("sigmaColor", DEFAULTS["sigmaColor"]),
-    key="sigmaColor"
-)
-sigmaSpace = st.sidebar.slider(
-    "Sigma Space", 1, 300,
-    value=st.session_state.get("sigmaSpace", DEFAULTS["sigmaSpace"]),
-    key="sigmaSpace"
-)
+d = st.sidebar.slider("Diameter (d)", 1, 25, key="d", step=2)
+sigmaColor = st.sidebar.slider("Sigma Color", 1, 300, key="sigmaColor")
+sigmaSpace = st.sidebar.slider("Sigma Space", 1, 300, key="sigmaSpace")
 
-median_ksize = st.sidebar.slider(
-    "Median Blur Kernel Size", 1, 15,
-    value=st.session_state.get("median_ksize", DEFAULTS["median_ksize"]),
-    step=2, key="median_ksize"
-)
+median_ksize = st.sidebar.slider("Median Blur Kernel Size", 1, 15, key="median_ksize", step=2)
 
-blockSize = st.sidebar.slider(
-    "Adaptive Threshold Block Size", 3, 51,
-    value=st.session_state.get("blockSize", DEFAULTS["blockSize"]),
-    step=2, key="blockSize"
-)
-C = st.sidebar.slider(
-    "Adaptive Threshold C-value", -20, 20,
-    value=st.session_state.get("C", DEFAULTS["C"]),
-    key="C"
-)
+blockSize = st.sidebar.slider("Adaptive Threshold Block Size", 3, 51, key="blockSize", step=2)
+C = st.sidebar.slider("Adaptive Threshold C-value", -20, 20, key="C")
 
 st.sidebar.markdown("### ❓ How It Works")
 with st.sidebar.expander("Cartoonify Explained"):
@@ -130,7 +98,8 @@ def cartoonify(img):
         C=st.session_state.C
     )
     color = cv2.bilateralFilter(
-        img, d=st.session_state.d,
+        img,
+        d=st.session_state.d,
         sigmaColor=st.session_state.sigmaColor,
         sigmaSpace=st.session_state.sigmaSpace
     )
