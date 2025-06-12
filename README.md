@@ -8,26 +8,36 @@ Cartoonify is a clean, interactive Streamlit app that transforms your images int
 ---
 
 ## ✨ Features
-- Upload any JPG or PNG image
-- Real-time sliders for edge detection, blur, and filtering
-- Optional enhancements (soft edges, saturation boost)
-- Side-by-side result viewer
-- Downloadable output
+- Upload any JPG or PNG image  
+- Real-time sliders for edge detection, blur, and filtering  
+- Optional enhancements (soft edges, saturation boost)  
+- Side-by-side result viewer  
+- Downloadable output  
 
 ---
 
-## 🖼️ How It Works
+## 🖼️ Sample Input
 
-1. **Bilateral Filtering** smooths colors while preserving edges.
-2. **Adaptive Thresholding** detects comic-style edges.
-3. **Bitwise Masking** combines colors + edges.
-4. Optional **enhancers** add finishing polish.
+*Here’s an example of an original photo you could upload:*
+
+![sample input](sample_input.png)
 
 ---
 
 ## 📸 Sample Result
 
+*And here’s the cartoonified output you’ll get:*
+
 ![cartoon sample](sample_output.png)
+
+---
+
+## 🖼️ How It Works
+
+1. **Bilateral Filtering** smooths colors while preserving edges.  
+2. **Adaptive Thresholding** detects comic-style outlines.  
+3. **Bitwise Masking** combines the smoothed color regions with crisp edges.  
+4. Optional **enhancers** add finishing polish (soft edges, color boost).
 
 ---
 
