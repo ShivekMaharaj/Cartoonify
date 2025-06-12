@@ -4,7 +4,7 @@
 
 This app is the first in a forthcoming series of image-processing tools, inspired by the recent “Ghibli filter” trend sweeping social media. Future releases will include pencil-sketch, watercolor, and film-noir effects—every tool designed to let you unleash your creative vision with zero coding.
 
-👉 **Live Demo**: [Click here to try it out](https://shivekmaharaj-cartoonify.streamlit.app)  
+👉 **Live Demo**: [Click here to try it out](https://cartoonify-app.streamlit.app/)  
 📦 **Built With**: Python · Streamlit · OpenCV · Pillow · NumPy
 
 ---
