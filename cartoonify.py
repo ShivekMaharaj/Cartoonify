@@ -53,7 +53,7 @@ if "reset_trigger" not in st.session_state:
 def reset_params():
     for k, v in DEFAULTS.items():
         st.session_state[k] = v
-    st.experimental_rerun()
+    st.rerun()
 
 st.sidebar.title("🛠️ Controls")
 
